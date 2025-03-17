@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "1beec282-ffc7-4869-8162-f545b3b18a87",
+		"name": "API COINSCRAP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30606710"
+	},
+	"item": [
+		{
+			"name": "register user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var body = JSON.parse(responseBody);\r",
+							"console.log(body.access_token)\r",
+							"if (body && body.access_token) {\r",
+							"    pm.globals.set(\"access_token\", body.access_token);\r",
+							"} else {\r",
+							"    console.error(\"El cuerpo de la respuesta no contiene un access_token válido.\");\r",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"identifier\": \"user1\",\r\n  \"password\": \"password123\",\r\n  \"roles\": [\"admin\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"register"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/api/register \\\r\n-H \"Content-Type: application/json\" \\\r\n-d '{\r\n  \"identifier\": \"user123\",\r\n  \"password\": \"password123\"\r\n}'"
+			},
+			"response": []
+		},
+		{
+			"name": "login user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var body = JSON.parse(responseBody);\r",
+							"console.log(body.access_token)\r",
+							"if (body && body.access_token) {\r",
+							"    pm.globals.set(\"access_token\", body.access_token);\r",
+							"} else {\r",
+							"    console.error(\"El cuerpo de la respuesta no contiene un access_token válido.\");\r",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"identifier\": \"user1\",\r\n  \"password\": \"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"login"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/api/login \\\r\n-H \"Content-Type: application/json\" \\\r\n-d '{\r\n  \"identifier\": \"user123\",\r\n  \"password\": \"password123\"\r\n}'"
+			},
+			"response": []
+		},
+		{
+			"name": "get profile user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"profile"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET http://localhost:3000/api/profile \\\r\n-H \"Authorization: Bearer TU_ACCESS_TOKEN\""
+			},
+			"response": []
+		}
+	]
+}
