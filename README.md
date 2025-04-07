@@ -64,6 +64,14 @@ docker-compose down -v
 
 ---
 
+Opcional, si quieres limpiar todos los volúmenes no usados
+
+```sh
+docker volume prune -f
+```
+
+---
+
 ## ▶️ Ejecutar la API
 
 Para instalar las dependencias y ejecutar la API:
