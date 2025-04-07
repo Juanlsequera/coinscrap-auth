@@ -19,7 +19,7 @@ Antes de comenzar, asegúrate de tener instalado:
 1️⃣ **Clonar el repositorio**
 
 ```sh
-git clone https://github.com/tu-usuario/coinscrap-auth.git
+git clone https://github.com/Juanlsequera/coinscrap-auth.git
 cd coinscrap-auth
 ```
 
